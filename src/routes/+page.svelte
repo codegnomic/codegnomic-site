@@ -1,8 +1,4 @@
 <script>
-    import { getContext, hasContext } from "svelte"
-
-    const user = getContext("user")
-    if (user) console.log(user)
 </script>
 
 <h1>Welcome to SvelteKit</h1>

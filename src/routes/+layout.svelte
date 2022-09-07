@@ -1,9 +1,15 @@
 <script>
+    import PageTransition from "$lib/components/PageTransition.svelte"
     import { state } from "$lib/store"
-    import { setContext } from "svelte"
+    import { onMount } from "svelte"
+    export let data
 
-    setContext("user", $state.account)
-    console.log($state.account)
+    onMount(() => {
+        if (!$state.account) {
+            state.getUser()
+            return
+        }
+    })
 </script>
 
 <nav>
@@ -15,4 +21,7 @@
         <a href="/login">Login</a>
     {/if}
 </nav>
-<slot />
+
+<PageTransition refresh={data.url}>
+    <slot />
+</PageTransition>

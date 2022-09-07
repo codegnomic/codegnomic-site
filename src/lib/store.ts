@@ -18,6 +18,14 @@ const createState = () => {
             const user = await sdk.account.get();
             state.init(user);
         },
+        getUser: async() => {
+            try {
+                const user = await sdk.account.get()
+                state.init(user)
+            } catch (error) {
+                return set({account: null, alert: error})
+            }     
+        },
         logout: async () => {
             await sdk.account.deleteSessions()
             return set({account: null, alert: null})

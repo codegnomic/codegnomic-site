@@ -4,7 +4,8 @@
     import { onMount, beforeUpdate } from "svelte"
 
     let email: string,
-        password: string = ""
+        password: string = "",
+        error: string
 
     beforeUpdate(() => {
         if ($state.account) goto("/")
